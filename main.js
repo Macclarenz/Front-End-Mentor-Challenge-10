@@ -1,63 +1,85 @@
-const navToggle = document.querySelector('.nav-hamburger-btn');
+const navToggle = document.querySelector('.nav-toggle');
 
-const navDisplay = (navToggle) => {
-    const navHamburger = document.getElementById('nav-hamburger-img');
-    const navContainer = document.querySelector('nav');
+navToggle.addEventListener('click', () => {
+    navDisplay();
+})
 
-    navToggle.addEventListener('click', () => {
-        navContainer.classList.toggle('nav-active');
-
-        if (navContainer.classList.contains('nav-active')) {
-            navHamburger.src = './images/icon-close.svg';
-        } else {
-            navHamburger.src = './images/icon-hamburger.svg';
-        }
-    })
-}
-
-navDisplay(navToggle);
-
-const navDropdownToggle = document.querySelectorAll('.nav-dropdown-btn');
-navDropdownToggle.forEach(dropdown => dropdown.addEventListener('click', navDropdownDisplay))
-
-function navDropdownDisplay () {
-    navDropdownToggle.forEach((dropdown, index) => {
-        if (this === navDropdownToggle[index]) {
-            dropdown.classList.toggle('nav-dropdown-active');
-        } else {
-            dropdown.classList.remove('nav-dropdown-active');
-        }
-    })
-}
+navToggle.addEventListener('focus', () => {
+    navDisplay();
+})
 
 
+function navDisplay() {
+    const navContainer = document.querySelector('.nav-list')
+    const navHamburgerPic = document.querySelector('.nav-toggle-pic');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-// SCROLL REVEAL
-window.addEventListener('scroll', reveal);
+    navContainer.classList.toggle('nav-list-open');
 
-function reveal () {
-    var reveals = document.querySelectorAll('.main-text');
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var revealTop = reveals[i].getBoundingClientRect().top;
-        var revealPoint = 100;
-
-        if (revealTop < windowHeight - revealPoint) {
-            reveals[i].classList.add('active');
-        } else {
-            reveals[i].classList.remove('active');
-        }
+    if (navContainer.classList.contains('nav-list-open')) {
+        navHamburgerPic.src = './images/icon-close.svg';
+        navLinks.forEach(navLink => {
+            navLink.style.transitionDelay = '300ms';
+        })
+    } else {
+        navHamburgerPic.src = './images/icon-hamburger.svg';
+        navLinks.forEach(navLink => {
+            navLink.style.transitionDelay = '0ms';
+        })
     }
 }
 
+// SCROLL REVEAL
+window.addEventListener('scroll', revealMainText);
 
-// SLIDER ANIMATION
-const tl = gsap.timeline({defaults: {ease: 'power1.out'}});
+function revealMainText () {
+    var reveals = document.querySelectorAll('.main-text');
 
-tl.fromTo('.slider-h2', {opacity: 0,}, {opacity: 1.5, delay: .35, duration: .8, stagger: .25})
-tl.to('.slider', { opacity: 0, duration: .5, delay: .8, zIndex: -1});
-tl.fromTo('.header-container', {opacity: 0}, {opacity: 1, duration: .3});
-tl.fromTo('main', {opacity: 0}, {opacity: 1, duration: .3}, '-=0.3');
-tl.fromTo('footer .container', {opacity: 0}, {opacity: 1, duration: .3}, '-=0.3');
+    for (let i = 0; i < reveals.length; i++) {
+        const delay = (i * 100) + 'ms';
+        reveals[i].style.transitionDelay = delay;
+    }
 
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var revealTop = reveals[i].getBoundingClientRect().top;
+        var revealPoint = 120;
 
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('main-text-display');
+        } 
+    }
+}
+
+window.addEventListener('scroll', revealArticleLinks);
+
+function revealArticleLinks () {
+    var reveals = document.querySelectorAll('.article-link');
+
+    for (let i = 0; i < reveals.length; i++) {
+        const delay = (i * 100) + 'ms';
+        reveals[i].style.transitionDelay = delay;
+    }
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var revealTop = reveals[i].getBoundingClientRect().top;
+        var revealPoint = 150;
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('article-container-display');
+        } 
+    }
+}
+
+// STICKY NAV
+window.addEventListener('scroll', scrollNavigation);
+
+function scrollNavigation () {
+    const nav = document.querySelector('.nav-container');
+    if(window.pageYOffset > nav.offsetTop) {
+        nav.classList.add('nav-sticky')
+    } else {
+        nav.classList.remove('nav-sticky');
+    }
+}

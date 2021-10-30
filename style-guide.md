@@ -11,39 +11,24 @@ The designs were created to the following widths:
 
 ### Primary
 
-- Light red (CTA text): hsl(356, 100%, 66%)
-- Very light red (CTA hover background): hsl(355, 100%, 74%)
-- Very dark blue (headings): hsl(208, 49%, 24%)
+- Dark Blue: hsl(233, 26%, 24%)
+- Lime Green: hsl(136, 65%, 51%)
+- Bright Cyan: hsl(192, 70%, 51%)
 
 ### Neutral
 
-- White (text): hsl(0, 0%, 100%)
-- Grayish blue (footer text): hsl(240, 2%, 79%)
-- Very dark grayish blue (body copy): hsl(207, 13%, 34%)
-- Very dark black blue (footer background): hsl(240, 10%, 16%)
-
-### Gradient
-
-Background gradient - Intro/CTA mobile nav:
-
-- Very light red: hsl(13, 100%, 72%)
-- Light red: hsl(353, 100%, 62%)
-
-Background gradient - body:
-
-- Very dark gray blue: hsl(237, 17%, 21%)
-- Very dark desaturated blue: hsl(237, 23%, 32%)
+- Grayish Blue: hsl(233, 8%, 62%)
+- Light Grayish Blue: hsl(220, 16%, 96%)
+- Very Light Gray: hsl(0, 0%, 98%)
+- White: hsl(0, 0%, 100%)
 
 ## Typography
 
 ### Body Copy
 
-- Font size: 16px
+- Font size: 18px
 
-### Fonts
+### Font
 
-- Family: [Overpass](https://fonts.google.com/specimen/Overpass?preview.text_type=custom)
-- Weights: 300, 600
-
-- Family: [Ubuntu](https://fonts.google.com/specimen/Ubuntu?preview.text_type=custom)
-- Weights: 400, 500, 700
+- Family: [Public Sans](https://fonts.google.com/specimen/Public+Sans)
+- Weights: 300, 400, 700
